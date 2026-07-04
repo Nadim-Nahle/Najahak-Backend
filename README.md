@@ -13,7 +13,7 @@ REST API for an internal dashboard that tracks client requests through a
 ## Live Deployment
 
 - **API base URL:** https://najahak-backend.vercel.app/api
-- **Frontend (uses this API):** https://najahak-frontend.vercel.app/
+- **Frontend (uses this API):** #https://najahak-frontend.vercel.app/
 - **Test account:** `test@test.com` / `123456` (or register your own via the frontend's Sign Up page)
 
 Running this backend locally is only needed if you want to inspect/modify the code — the live API above is fully functional and already connected to a real database. See "Local Setup" below if you'd still like to run it yourself.
@@ -78,6 +78,6 @@ Status workflow: `New -> In Progress -> Done`. No skipping, no going backward.
 
 ## Notes on design decisions
 
-- Password validation happens in the service layer, before hashing — a schema-level `minlength` would validate the hash's length, not the original password.
+- Password validation happens in the service layer, before hashing, a schema-level `minlength` would validate the hash's length, not the original password.
 - Login returns the same generic error for a wrong password and a nonexistent email, to avoid leaking which emails are registered.
 - The status workflow is defined once in `src/constants/requestStatus.js`; both the schema `enum` and the service-layer transition check import from it.
