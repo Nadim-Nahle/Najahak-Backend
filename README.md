@@ -13,7 +13,7 @@ REST API for an internal dashboard that tracks client requests through a
 ## Live Deployment
 
 - **API base URL:** https://najahak-backend.vercel.app/api
-- **Frontend (uses this API):** #https://najahak-frontend.vercel.app/
+- **Frontend (uses this API):** https://najahak-frontend.vercel.app/
 - **Test account:** `test@test.com` / `123456` (or register your own via the frontend's Sign Up page)
 
 Running this backend locally is only needed if you want to inspect/modify the code — the live API above is fully functional and already connected to a real database. See "Local Setup" below if you'd still like to run it yourself.
