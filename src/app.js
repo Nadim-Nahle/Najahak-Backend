@@ -12,7 +12,23 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: clientOrigin }));
+
+// Dynamic CORS configuration to handle multiple origins
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (clientOrigin.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Origin ${origin} not allowed by CORS`));
+      }
+    },
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 if (env !== "test") {
   app.use(morgan(env === "development" ? "dev" : "combined"));
