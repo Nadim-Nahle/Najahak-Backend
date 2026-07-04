@@ -10,9 +10,13 @@ REST API for an internal dashboard that tracks client requests through a
 - JWT (jsonwebtoken) for authentication
 - bcryptjs for password hashing
 
-## Architecture
+## Live Deployment
 
-Layered architecture, each layer with a single responsibility:
+- **API base URL:** https://najahak-backend.vercel.app/api
+- **Frontend (uses this API):** https://najahak-frontend.vercel.app/
+- **Test account:** `test@test.com` / `123456` (or register your own via the frontend's Sign Up page)
+
+Running this backend locally is only needed if you want to inspect/modify the code — the live API above is fully functional and already connected to a real database. See "Local Setup" below if you'd still like to run it yourself.
 
 ## Setup
 
@@ -36,7 +40,7 @@ Layered architecture, each layer with a single responsibility:
      node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-- `CLIENT_ORIGIN` — the URL of your frontend dev server (defaults to `http://localhost:5173`)
+- `CLIENT_ORIGIN` — the URL of your frontend dev server (defaults to `http://localhost:5173` or `https://najahak-frontend.vercel.app`)
 
 4. Start the server:
 
@@ -52,7 +56,7 @@ All responses follow `{ success: true, data: ... }` or `{ success: false, messag
 
 | Method | Endpoint             | Body                  | Notes                            |
 | ------ | -------------------- | --------------------- | -------------------------------- |
-| POST   | `/api/auth/register` | `{ email, password }` | Password must be >= 8 characters |
+| POST   | `/api/auth/register` | `{ email, password }` | Password must be >= 6 characters |
 | POST   | `/api/auth/login`    | `{ email, password }` | Returns `{ token, user }`        |
 
 ### Requests (require `Authorization: Bearer <token>`)
