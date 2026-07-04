@@ -12,20 +12,7 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 app.use(helmet());
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      // Allow requests without an Origin header (Postman, curl, mobile apps)
-      if (!origin) return callback(null, true);
-
-      if (clientOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      callback(new Error("Not allowed by CORS"));
-    },
-  }),
-);
+app.use(cors({ origin: clientOrigin }));
 app.use(express.json());
 if (env !== "test") {
   app.use(morgan(env === "development" ? "dev" : "combined"));
