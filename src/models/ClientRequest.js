@@ -36,7 +36,6 @@ const clientRequestSchema = new mongoose.Schema(
   },
 );
 
-// Speeds up the common dashboard query: "show me all requests with status X"
 clientRequestSchema.index({ status: 1, createdAt: -1 });
 
 module.exports = mongoose.model("ClientRequest", clientRequestSchema);
