@@ -10,7 +10,7 @@ async function findAll(filter = {}) {
   return ClientRequest.find(filter).sort({ createdAt: -1 });
 }
 
-// Fetches a single request by its Mongo _id.
+// Fetches a single request
 async function findById(id) {
   return ClientRequest.findById(id);
 }
